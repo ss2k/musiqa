@@ -4,6 +4,7 @@
             <hr>
             <h3><%= link_to "Add new question", new_question_path  %></h3>
             <% @questions.each do |q| %>
+            <hr>
             <div class="question-block-home">
               <div class="row-fluid">
                 <div class="span8">
@@ -24,7 +25,7 @@
                   <p></p>
                   <p>
                     <i class="icon-user"></i> by <a href="#"><%= q.user.username %></a> 
-                    | <i class="icon-calendar"></i> Sept 16th, 2012
+                    | <i class="icon-calendar"></i> June 29, 2013
                     | <i class="icon-comment"></i> <a href="#"><%= "#{q.answers.count} Answers" %> </a>
                     <% if !q.tag_list.nil? %>| <i class="icon-tags"></i> Tags : <%= q.tag_list %><% end %>
                      <a href="#"><span class="label label-info">Snipp</span></a> 
@@ -41,7 +42,6 @@
         <div id="songs-home">
           <h2>Songs</h2>
           <hr>
-          <p>John Mayer - Gravity ohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravityohn Mayer - Gravity</p>
           <p>John Mayer - Gravity</p>
           <p>John Mayer - Gravity</p>
           <p>John Mayer - Gravity</p>

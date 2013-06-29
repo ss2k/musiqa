@@ -1,53 +1,4 @@
-<%= @question.question %>
-<br />Score: <%= div_for @question do %><%= @question.qscore %> <% end %> - <%= link_to "+", qscore_path(@question), remote: true %> | <%= link_to "-", qscore_path(@question), remote: true %>
-<br />
-<%= @question.description %>
-<br />
-By: <%= @question.user.username %>
-<br />Tags: <%= @question.tag_list %>
-<hr />
-<p>
-  <% if automated?(@question) %>
-    <h2>Automated Answer</h2>
-      <% if !@question.artist.nil? %>
-        <%= "Artist: #{@question.artist}" %><br />
-      <% end %>
-      <% if !@question.song.nil? %>
-        <%= "Song: #{@question.song}" %><br />
-      <% end %>
-      <% if @question.similar? && !@question.artist.nil? %>
-        <%= "Similar Artists: "%> <%# similar_artists = find_similar_artists(@question.artist) %><br />
-        <% find_similar_artists(@question.artist).each do |artist| %>
-          <%= artist['name'] %>
-          <br />
-          <% end %>
-      <% elsif @question.similar? && !@question.song.nil? %>
-        <%= "Similar songs" %><br />
-      <% end %>
-    <% end %>
-    <b>Answers Below</b>
-    <div id="answer_list">
-    <% @answers.each do |ans| %>
-      <p>
-        <%= ans.answer %>
-        <br />
-        Score: <%= div_for ans do %><%= ans.score %> <% end %> - <%= link_to "+", score_path(ans.id), remote: true %> | <%= link_to "-", score_path(ans.id), remote: true %>
-        <br />
-        By: <%= ans.user.username %>
-      </p>
-      <hr />
-  <% end %>
-</div><!--end answer_list-->
-  <a href="#" id="answer_the_question">Answer</a>
-  <div id="answer_form">
-  <%= simple_form_for [@question, @answer], remote: true do |f| %>
-    <%= f.input :answer %>
-    <%= f.submit %>
-  <% end %>
-</div>
-</p>
-
-
+          <div class="span8">
             <h3>Question # <%= @question.id %></h3>
             <div class="question-block-detail">
               <div class="row-fluid">
@@ -74,7 +25,7 @@ By: <%= @question.user.username %>
                   <p></p>
                   <p>
                     <i class="icon-user"></i> by <a href="#"><%= @question.user.username %></a> 
-                    | <i class="icon-calendar"></i> Sept 16th, 2012
+                    | <i class="icon-calendar"></i> June 29, 2013
                     | <i class="icon-comment"></i> <a href="#"><%= "#{@question.answers.count} Answers" %> </a>
                     <% if !@question.tag_list.nil? %>| <i class="icon-tags"></i> Tags : <%= @question.tag_list %><% end %>
                      <a href="#"><span class="label label-info">Snipp</span></a> 
@@ -85,7 +36,7 @@ By: <%= @question.user.username %>
             
             <hr>
             
-            <h3>Answers</h3>
+            <h3>User Answers</h3>
             
 
             <div class="answers">
@@ -112,7 +63,7 @@ By: <%= @question.user.username %>
                   <p></p>
                   <p>
                     <i class="icon-user"></i> by <a href="#"><%= a.user.username %></a> 
-                    | <i class="icon-calendar"></i> Sept 16th, 2012
+                    | <i class="icon-calendar"></i> June 29, 2013
                   </p>
                 </div>
               </div>
@@ -129,4 +80,27 @@ By: <%= @question.user.username %>
             </div>
             </div>
             </div>
-            
+            </div>
+
+          <div class="span4" id="sidebar-right">
+            <div id="automated-detail">
+              <% if automated?(@question) %>
+              <h3>Automated Answer</h3>
+                <% if !@question.artist.nil? %>
+                  <%= "Artist: #{@question.artist}" %><br />
+                <% end %>
+                <% if !@question.song.nil? %>
+                  <%= "Song: #{@question.song}" %><br />
+                <% end %>
+                <% if @question.similar? && !@question.artist.nil? %>
+                  <%= "Similar Artists: "%> <%# similar_artists = find_similar_artists(@question.artist) %><br />
+                  <% find_similar_artists(@question.artist).each do |artist| %>
+                    <%= artist['name'] %>
+                    <br />
+                    <% end %>
+                <% elsif @question.similar? && !@question.song.nil? %>
+                  <%= "Similar songs" %><br />
+                <% end %>
+              <% end %>
+            </div>
+          </div>
