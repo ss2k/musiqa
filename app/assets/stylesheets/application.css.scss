@@ -41,6 +41,15 @@ hr {
   line-height: 20px;
 }
 
+.question-score-detail a,
+.answer-score-detail a {
+  text-align: center;
+  vertical-align: middle;
+  margin-left: auto;
+  margin-right:auto;
+  font-size:170%;
+}
+
 .question-block-home, .question-block-detail,
 .answer-block-detail {
   border: 1px solid #e5e5e5;
@@ -65,3 +74,4 @@ hr {
   margin-left: auto;
   margin-right: auto;
 }
+

@@ -10,7 +10,11 @@
 <body>
 <%= render 'layouts/header' %>
 <%= render 'layouts/messages' %>
+	<div class="row-fluid">
+    <div class="span10 offset1" id="content-container">
 <%= yield %>
+		</div>
+	</div>
 <%= render 'layouts/footer' %>
 </body>
 </html>
