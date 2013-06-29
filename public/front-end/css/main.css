@@ -1,0 +1,10 @@
+#sidebar-right {
+	padding-left: 10px;
+	border-left: 1px solid gray;
+}
+
+.navbar-inner {
+border-radius: 0px; 
+-moz-border-radius: 0px; 
+-webkit-border-radius: 0px; 
+}
