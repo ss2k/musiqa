@@ -1,0 +1,4 @@
+$(document).ready(function(){
+  $('#question_<%= params[:id] %>').fadeOut('slow');
+  $('#question_<%= params[:id] %>').fadeIn('slow').text(<%= @qscore + 1 %>);
+});

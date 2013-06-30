@@ -17,12 +17,22 @@ class QuestionsController < ApplicationController
 	end
 
 	def index
-		@questions = Question.all
+		@questions = Question.latest_top_questions
 	end
 
 	def show
 		@question = Question.find(params[:id])
 		@answer = Answer.new
 		@answers = @question.answers
+		@qscore = @question.qscore
+	end
+
+	def qscore
+		@question = Question.find(params[:id])
+		@qscore = @question.qscore
+		@question.increment!(:qscore)
+		respond_to do |format|
+			format.js
+		end
 	end
 end

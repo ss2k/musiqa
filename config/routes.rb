@@ -1,7 +1,7 @@
 Musiqa::Application.routes.draw do
   get "dashboard/index"
   get "score/:id" => 'answers#score', :as => 'score'
-  
+  get "qscore/:id" => 'questions#qscore', :as => 'qscore'
   devise_for :users
   
   resources :questions do

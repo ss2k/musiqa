@@ -1,1 +1,7 @@
 <h1>Welcome to MusiQA</h1>
+<br />
+<% @questions.each do |q| %>
+  <%= "#{q.qscore} -" %> <%= link_to q.question, q  %> <%= "- #{q.user.username}" %>
+  <br /><% if !q.tag_list.nil? %>Tags: <%= q.tag_list %><% end %>
+  <br />
+<% end %>

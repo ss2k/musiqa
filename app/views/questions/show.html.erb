@@ -1,8 +1,11 @@
 <%= @question.question %>
+<br />Score: <%= div_for @question do %><%= @question.qscore %> <% end %> - <%= link_to "+", qscore_path(@question), remote: true %> | <%= link_to "-", qscore_path(@question), remote: true %>
 <br />
 <%= @question.description %>
 <br />
 By: <%= @question.user.username %>
+<br />Tags: <%= @question.tag_list %>
+<hr />
 <p>
   <b>Answers Below</b>
   <% @answers.each do |ans| %>
