@@ -3,7 +3,7 @@ require 'open-uri'
 module ApplicationHelper
   def find_similar_artists(artist)
     api = '0CBLHAD8QZOXPVIDI'
-    result = JSON.parse(open('http://developer.echonest.com/api/v4/artist/similar?api_key=0CBLHAD8QZOXPVIDI&name=' + artist).read)['response']['artists']
+    result = JSON.parse(open('http://developer.echonest.com/api/v4/artist/similar?api_key=0CBLHAD8QZOXPVIDI&name=' + artist.gsub(" ", "%20")).read)['response']['artists']
     artists = Array.new
     result.each do |a|
       artists.push(a)

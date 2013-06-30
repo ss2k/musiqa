@@ -1,5 +1,43 @@
-<% if current_user %>
-	<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<% else %>
-	<%= link_to "Sign In", new_user_session_path %>
-<% end %>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="index.html" name="top">Musi.QA</a>
+          <div class="nav-collapse collapse">
+            <form class="navbar-search pull-left">
+              <input type="text" class="search-query" placeholder="Search">
+            </form>
+            <ul class="nav">
+              <li><a href="#"><i class="icon-home icon-white"></i> Home</a></li>
+              <li class="divider-vertical"></li>
+              <li class="active"><a href="#"><i class="icon-question-sign icon-white"></i> Questions</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#"><i class="icon-music icon-white"></i> Songs</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#"><i class="icon-tags icon-white"></i> Tags</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#"><i class="icon-lock icon-white"></i></a></li>
+              <li class="divider-vertical"></li>
+            </ul>
+            <div class="btn-group pull-right">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="icon-user"></i> admin <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="icon-wrench"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="icon-share"></i> Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        <!--/.nav-collapse -->
+        </div>
+      <!--/.container-fluid -->
+      </div>
+    <!--/.navbar-inner -->
+    </div>
+    <!--/.navbar -->
