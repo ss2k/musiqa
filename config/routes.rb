@@ -1,5 +1,7 @@
 Musiqa::Application.routes.draw do
-  devise_for :users
+  get "dashboard/index"
+
+  devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
   resource :questions
   root :to => 'questions#index'
   # The priority is based upon order of creation:
