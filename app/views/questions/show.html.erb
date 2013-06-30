@@ -7,9 +7,20 @@ By: <%= @question.user.username %>
 <br />Tags: <%= @question.tag_list %>
 <hr />
 <p>
-  <%# if @question.automated? %>
+  <% if automated?(@question) %>
   <h2>Automated Answer</h2>
-  <%# end %>
+    <% if !@question.artist.nil? %>
+      <%= "Artist: #{@question.artist}" %><br />
+    <% end %>
+    <% if !@question.song.nil? %>
+      <%= "Song: #{@question.song}" %><br />
+    <% end %>
+    <% if @question.similar? && !@question.artist.nil? %>
+      <%= "Similar Artists #{find_similar_artists(@question.artist)}" %><br />
+    <% elsif @question.similar? && !@question.song.nil? %>
+      <%= "Similar songs" %><br />
+    <% end %>
+  <% end %>
   <b>Answers Below</b>
   <div id="answer_list">
   <% @answers.each do |ans| %>
