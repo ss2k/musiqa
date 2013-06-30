@@ -3,3 +3,21 @@
 <%= @question.description %>
 <br />
 By: <%= @question.user.username %>
+<p>
+  <b>Answers Below</b>
+  <% @answers.each do |ans| %>
+    <p>
+      <%= ans.answer %>
+      <br />
+      By: <%= ans.user.username %>
+    </p>
+    <hr />
+  <% end %>
+  <a href="#" id="answer_the_question">Answer</a>
+  <div id="answer_form">
+  <%= simple_form_for [@question, @answer] do |f| %>
+    <%= f.input :answer %>
+    <%= f.submit %>
+  <% end %>
+</div>
+</p>

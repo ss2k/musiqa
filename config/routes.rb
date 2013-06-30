@@ -3,8 +3,10 @@ Musiqa::Application.routes.draw do
   
   devise_for :users
   
-  resource :questions
-  get "/questions/:id", :to => "questions#show", :as => "question"
+  resources :questions do
+    resources :answers
+  end
+  #get "/questions/:id", :to => "questions#show", :as => "question"
   root :to => 'questions#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
