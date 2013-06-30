@@ -8,30 +8,34 @@ By: <%= @question.user.username %>
 <hr />
 <p>
   <% if automated?(@question) %>
-  <h2>Automated Answer</h2>
-    <% if !@question.artist.nil? %>
-      <%= "Artist: #{@question.artist}" %><br />
+    <h2>Automated Answer</h2>
+      <% if !@question.artist.nil? %>
+        <%= "Artist: #{@question.artist}" %><br />
+      <% end %>
+      <% if !@question.song.nil? %>
+        <%= "Song: #{@question.song}" %><br />
+      <% end %>
+      <% if @question.similar? && !@question.artist.nil? %>
+        <%= "Similar Artists: "%> <%# similar_artists = find_similar_artists(@question.artist) %><br />
+        <% find_similar_artists(@question.artist).each do |artist| %>
+          <%= artist['name'] %>
+          <br />
+          <% end %>
+      <% elsif @question.similar? && !@question.song.nil? %>
+        <%= "Similar songs" %><br />
+      <% end %>
     <% end %>
-    <% if !@question.song.nil? %>
-      <%= "Song: #{@question.song}" %><br />
-    <% end %>
-    <% if @question.similar? && !@question.artist.nil? %>
-      <%= "Similar Artists #{find_similar_artists(@question.artist)}" %><br />
-    <% elsif @question.similar? && !@question.song.nil? %>
-      <%= "Similar songs" %><br />
-    <% end %>
-  <% end %>
-  <b>Answers Below</b>
-  <div id="answer_list">
-  <% @answers.each do |ans| %>
-    <p>
-      <%= ans.answer %>
-      <br />
-      Score: <%= div_for ans do %><%= ans.score %> <% end %> - <%= link_to "+", score_path(ans.id), remote: true %> | <%= link_to "-", score_path(ans.id), remote: true %>
-      <br />
-      By: <%= ans.user.username %>
-    </p>
-    <hr />
+    <b>Answers Below</b>
+    <div id="answer_list">
+    <% @answers.each do |ans| %>
+      <p>
+        <%= ans.answer %>
+        <br />
+        Score: <%= div_for ans do %><%= ans.score %> <% end %> - <%= link_to "+", score_path(ans.id), remote: true %> | <%= link_to "-", score_path(ans.id), remote: true %>
+        <br />
+        By: <%= ans.user.username %>
+      </p>
+      <hr />
   <% end %>
 </div><!--end answer_list-->
   <a href="#" id="answer_the_question">Answer</a>

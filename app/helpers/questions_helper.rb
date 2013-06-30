@@ -1,5 +1,5 @@
 #require 'net/http'
-require 'json'
+
 module QuestionsHelper
   def automated?(question)
     if question.similar
@@ -13,12 +13,5 @@ module QuestionsHelper
     else
       return false
     end
-  end
-
-  def find_similar_artists(artist)
-    api = ENV['en_api_key']
-    url = URI.parse('http://developer.echonest.com/api/v4/artist/similar?api_key=#{api}&name=#{artist}')
-    req = Net::HTTP::Get.new(url.to_s)
-    res = 
   end
 end
