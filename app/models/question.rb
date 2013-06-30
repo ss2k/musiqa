@@ -8,4 +8,10 @@ class Question < ActiveRecord::Base
   def self.latest_top_questions
     order("qscore DESC").limit(10)
   end
+
+  def self.automated?
+    if self.artist || self.song || self.similar || self.learn
+      return true
+    end
+  end
 end

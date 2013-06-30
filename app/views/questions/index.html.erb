@@ -1,7 +1,14 @@
-<h1>Welcome to MusiQA</h1>
+<h1>Welcome to MusiQA</h1><%= ENV['en_api_key'] %>
 <br />
 <% @questions.each do |q| %>
   <%= "#{q.qscore} -" %> <%= link_to q.question, q  %> <%= "- #{q.user.username}" %>
   <br /><% if !q.tag_list.nil? %>Tags: <%= q.tag_list %><% end %>
   <br />
 <% end %>
+
+<br />
+<div id="tag_cloud">
+  <% tag_cloud Question.tag_counts, %w[s m l] do |tag| %>
+    <%= tag.name %>
+  <% end %>
+</div>

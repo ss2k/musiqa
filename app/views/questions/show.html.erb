@@ -7,7 +7,11 @@ By: <%= @question.user.username %>
 <br />Tags: <%= @question.tag_list %>
 <hr />
 <p>
+  <%# if @question.automated? %>
+  <h2>Automated Answer</h2>
+  <%# end %>
   <b>Answers Below</b>
+  <div id="answer_list">
   <% @answers.each do |ans| %>
     <p>
       <%= ans.answer %>
@@ -18,9 +22,10 @@ By: <%= @question.user.username %>
     </p>
     <hr />
   <% end %>
+</div><!--end answer_list-->
   <a href="#" id="answer_the_question">Answer</a>
   <div id="answer_form">
-  <%= simple_form_for [@question, @answer] do |f| %>
+  <%= simple_form_for [@question, @answer], remote: true do |f| %>
     <%= f.input :answer %>
     <%= f.submit %>
   <% end %>

@@ -1,0 +1,4 @@
+$(document).ready(function(){
+  $('#answer_form').hide();
+  $('#answer_list').append("<p><%= @answer.answer %></p><br /> Score: <div class='answer' id='answer_<%= @answer.id %>'> <%= @answer.score %> </div> - <a href='/score/33' data-remote='true'>+</a> | <a href='/score/<%= @answer.id %>' data-remote='true'>-</a><br />By: <%= @answer.user.username %></p><hr />");
+});
