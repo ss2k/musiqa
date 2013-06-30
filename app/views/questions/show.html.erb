@@ -9,6 +9,8 @@ By: <%= @question.user.username %>
     <p>
       <%= ans.answer %>
       <br />
+      Score: <%= div_for ans do %><%= ans.score %> <% end %> - <%= link_to "+", score_path(ans.id), remote: true %> | <%= link_to "-", score_path(ans.id), remote: true %>
+      <br />
       By: <%= ans.user.username %>
     </p>
     <hr />

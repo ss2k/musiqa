@@ -14,4 +14,14 @@ class AnswersController < ApplicationController
       redirect_to @question
     end
   end
+
+  def score
+    answer = Answer.find(params[:id])
+    answer.increment!(:score)
+    @score = answer.score
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end

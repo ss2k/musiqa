@@ -1,0 +1,4 @@
+$(document).ready(function(){
+  $('#answer_<%= params[:id] %>').fadeOut('slow');
+  $('#answer_<%= params[:id] %>').fadeIn('slow').text(<%= @score %>);
+});
